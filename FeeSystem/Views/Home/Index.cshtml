@@ -1,0 +1,24 @@
+﻿@model IEnumerable<FeeSystem.Models.Resident>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HomePage</title>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    <h2>@ViewBag.Title</h2>
+
+    @foreach(var resident in Model)
+    {
+        <div>
+            <h2>Imie:@resident.Name</h2>
+            <h2>@resident.Surname</h2>
+            <h3>@resident.MetersOfFlat m2</h3>
+            <h3>@resident.HotWaterConsumption</h3>
+            <h3>@resident.ColdWaterConsumption</h3>
+        </div>
+    }
+</body>
+</html>
