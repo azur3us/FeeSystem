@@ -1,0 +1,12 @@
+﻿body {
+    background-image: url('/images/doodles.png');
+    background-repeat: repeat;
+    padding: 30px 0 20px 0;
+    
+}
+.body-content{
+    padding:0 10px 0 10px;
+}
+.my-own-header {
+    margin-right: 100%;
+}
