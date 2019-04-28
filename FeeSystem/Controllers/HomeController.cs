@@ -1,4 +1,5 @@
 ﻿using FeeSystem.Models;
+using FeeSystem.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -15,10 +16,15 @@ namespace FeeSystem.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Title = "Lista lokatorów:";
 
             var residents = _residentRepository.ReturnAllResidents().OrderBy(r => r.Id);
-            return View(residents);
+
+            var homeVM = new HomeVM()
+            {
+                Title = "Lista lokatorów:",
+                Residents = residents.ToList()
+            };
+            return View(homeVM);
         }
     }
 }

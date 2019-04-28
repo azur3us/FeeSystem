@@ -1,16 +1,9 @@
-﻿@model IEnumerable<FeeSystem.Models.Resident>
+﻿@model FeeSystem.ViewModels.HomeVM
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>HomePage</title>
-    <meta name="viewport" content="width=device-width" />
-</head>
-<body>
 
-    <h2>@ViewBag.Title</h2>
+ <h1>@Model.Title</h1>
 
-    @foreach(var resident in Model)
+    @foreach(var resident in Model.Residents)
     {
         <div>
             <h2>Imie:@resident.Name</h2>
@@ -20,5 +13,3 @@
             <h3>@resident.ColdWaterConsumption</h3>
         </div>
     }
-</body>
-</html>
