@@ -26,5 +26,13 @@ namespace FeeSystem.Controllers
             };
             return View(homeVM);
         }
+        public IActionResult Details(int id)
+        {
+            var resident = _residentRepository.TakeResidentById(id);
+
+            if (resident == null)
+                return NotFound();
+            return View(resident);
+        }
     }
 }

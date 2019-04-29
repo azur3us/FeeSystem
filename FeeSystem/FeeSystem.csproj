@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Models\ResidentRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\bootstrap\.github\CODEOWNERS" />
     <None Include="wwwroot\lib\bootstrap\.github\CONTRIBUTING.md" />
     <None Include="wwwroot\lib\bootstrap\.github\ISSUE_TEMPLATE\bug.md" />
