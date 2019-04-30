@@ -11,6 +11,6 @@ namespace FeeSystem.ViewModels
         [Display(Name ="Hasło")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
+        
     }
 }
