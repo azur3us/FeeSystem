@@ -1,5 +1,6 @@
 ﻿using FeeSystem.Models;
 using FeeSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -26,6 +27,7 @@ namespace FeeSystem.Controllers
             };
             return View(homeVM);
         }
+        [Authorize]
         public IActionResult Details(int id)
         {
             var resident = _residentRepository.TakeResidentById(id);
