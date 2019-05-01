@@ -20,7 +20,8 @@ namespace FeeSystem.Models
             new Resident { Name = "Robert", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3 },
             new Resident { Name = "Marcin", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3 },
             new Resident { Name = "Pioter", Surname = "Kowal", MetersOfFlat = 67.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3 },
-            new Resident { Name = "Jan", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3 }
+            new Resident { Name = "Jan", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3 },
+            new Resident { Name = "Mateusz", Surname = "Kulpa", MetersOfFlat = 81.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3 }
 
             );
             }

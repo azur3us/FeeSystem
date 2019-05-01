@@ -1,6 +1,7 @@
 ﻿using FeeSystem.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FeeSystem.Controllers
@@ -45,14 +46,23 @@ namespace FeeSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(LoginVM loginVM)
         {
-            if(!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 var user = new IdentityUser() { UserName = loginVM.UserName };
                 var result = await _userManager.CreateAsync(user, loginVM.Password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    var errList = "";
+                    var error = result.Errors.ToList(); 
+                    foreach (var err in error) 
+                    {
+                        this.ModelState.AddModelError("Password", err.Description);
+                    }
                 }
             }
             return View(loginVM);
