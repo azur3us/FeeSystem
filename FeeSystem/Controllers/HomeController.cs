@@ -30,7 +30,7 @@ namespace FeeSystem.Controllers
             return View(homeVM);
         }
         
-       // [Authorize]
+        [Authorize]
         public IActionResult Details(int id)
         {
             var resident = _residentRepository.TakeResidentById(id);
