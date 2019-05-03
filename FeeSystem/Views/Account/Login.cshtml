@@ -1,40 +1,27 @@
 ﻿@model LoginVM
 
-<h2>
-    Aby skorzystać z systemu musisz zalogować się lub
-    <a asp-action="Register" asp-controller="Account">zarejestrować!</a>
+    
+        <h2>
+            Aby skorzystać z systemu musisz zalogować się lub
+            <a asp-action="Register" asp-controller="Account">zarejestrować!</a>
 
-</h2>
+        </h2>
 
-<form asp-action="Login" asp-controller="Account" method="post" class="list-group-horizontal" role="form">
+        <form asp-action="Login" asp-controller="Account" method="post" class="box" role="form">
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div class="form-group">
-        <label asp-for="UserName" class="col-md-2"></label>
-        <div class="col-md-10">
-            <input asp-for="UserName" class="form-control" />
+            <h1>Logowanie</h1>
+            <input asp-for="UserName" placeholder="Nazwa użytkownika" />
             <span asp-validation-for="UserName" class="text-danger"></span>
-        </div>
 
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
+            <input asp-for="Password" placeholder="Hasło" />
             <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
 
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="submit" class="btn btn-primary" value="Logowanie"/>
-        </div>
-    </div>
+            <input type="submit" name="" value="Zaloguj" />
 
 
 
-</form>
+        </form>
 
+   
