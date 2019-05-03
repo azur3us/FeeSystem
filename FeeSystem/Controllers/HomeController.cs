@@ -1,4 +1,5 @@
-﻿using FeeSystem.Models;
+﻿using FeeSystem.Logic;
+using FeeSystem.Models;
 using FeeSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace FeeSystem.Controllers
     public class HomeController : Controller
     {
         private readonly IResidentRepository _residentRepository;
+        
 
         public HomeController(IResidentRepository residentRepository)
         {
@@ -27,14 +29,20 @@ namespace FeeSystem.Controllers
             };
             return View(homeVM);
         }
-        [Authorize]
+        
+       // [Authorize]
         public IActionResult Details(int id)
         {
             var resident = _residentRepository.TakeResidentById(id);
+            resident.PaymentDetails();
+
 
             if (resident == null)
                 return NotFound();
             return View(resident);
         }
+        
+       
+
     }
 }

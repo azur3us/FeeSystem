@@ -22,9 +22,9 @@
             @if (SignInManager.IsSignedIn(User))
             {
                 <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
-                      method="post" class="dropdown-menu-right">
+                      method="post">
                     <ul>
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+                        <li class="text-warning">@User.Identity.Name <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                     </ul>
                     
                 </form>
