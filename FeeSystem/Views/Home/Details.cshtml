@@ -1,18 +1,29 @@
 ﻿@model Resident
+@Math.Round(2m);
 
 <h2>@Model.Name - @Model.Surname</h2>
 
 <div class="img-thumbnail">
-    
-        <h3>@Model.MetersOfFlat m2</h3>
-        <h3>@Model.HotWaterConsumption</h3>
-        <h3>@Model.ColdWaterConsumption</h3>
-        <h4>@Model.PaymentDetails() PLN</h4>
-        <h4>@Cost</h4>
-        
-        
-    
-        
-    
-   
+
+
+    <h3>@Model.MetersOfFlat m2</h3>
+    <h3>@Model.HotWaterConsumption</h3>
+    <h3>@Model.ColdWaterConsumption</h3>
+
+    <h1>@Math.Round(Model.PaymentDetails().costOfExploitation,2)</h1>
+    <h1>@Math.Round(Model.PaymentDetails().costOfRepairFund,2)</h1>
+    <h1>@Math.Round(Model.PaymentDetails().costOfHotWaterConsumption,2)</h1>
+    <h1>@Math.Round(Model.PaymentDetails().costOfColdWaterConsumption,2)</h1>
+    <h1>@Math.Round(Model.PaymentDetails().costOfSewage,2)</h1>
+    <h1>@Math.Round(Model.PaymentDetails().costOfCentralHeating,2)</h1>
+    <h1>@Math.Round(Model.PaymentDetails().menagmentCost,2)</h1>
+    <h2>@Math.Round(Model.PaymentDetails().summaryOfCosts,2)</h2>
+
+
+
+
+
+
+
+
 </div>
