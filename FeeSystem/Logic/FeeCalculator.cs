@@ -38,5 +38,7 @@ namespace FeeSystem.Logic
                     costOfCentralHeating, menagmentCost, summaryOfCosts, summaryOfCostsInWords);
         }
 
+       
+
     }
 }

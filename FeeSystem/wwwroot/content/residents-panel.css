@@ -1,0 +1,13 @@
+﻿.resident-link:link, .resident-link:visited {
+    color:black;
+    text-decoration: none;
+   
+}
+.resident-link:hover {
+    color: #2845ff;
+    cursor: pointer;
+  
+}
+.figure-caption h2 {
+    transition: 1s;
+}

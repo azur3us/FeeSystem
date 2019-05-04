@@ -20,7 +20,7 @@ namespace FeeSystem.Controllers
         public IActionResult Index()
         {
 
-            var residents = _residentRepository.ReturnAllResidents().OrderBy(r => r.Id);
+            var residents = _residentRepository.ReturnAllResidents().OrderBy(r => r.PayerNumber);
 
             var homeVM = new HomeVM()
             {

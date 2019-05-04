@@ -1,30 +1,26 @@
 ﻿@model Resident
-@Math.Round(2m);
-
-<h2>@Model.Name - @Model.Surname</h2>
-
-<div class="img-thumbnail">
 
 
-    <h3>@Model.MetersOfFlat m2</h3>
-    <h3>@Model.HotWaterConsumption</h3>
-    <h3>@Model.ColdWaterConsumption</h3>
+<div class="details-box">
 
-    <h1>@Math.Round(Model.PaymentDetails().costOfExploitation,2)</h1>
-    <h1>@Math.Round(Model.PaymentDetails().costOfRepairFund,2)</h1>
-    <h1>@Math.Round(Model.PaymentDetails().costOfHotWaterConsumption,2)</h1>
-    <h1>@Math.Round(Model.PaymentDetails().costOfColdWaterConsumption,2)</h1>
-    <h1>@Math.Round(Model.PaymentDetails().costOfSewage,2)</h1>
-    <h1>@Math.Round(Model.PaymentDetails().costOfCentralHeating,2)</h1>
-    <h1>@Math.Round(Model.PaymentDetails().menagmentCost,2)</h1>
-    <h2>@Math.Round(Model.PaymentDetails().summaryOfCosts,2)</h2>
-    <h3>@Model.PaymentDetails().summaryOfCostsInWords</h3>
+    <h5> Data:</h5>
+    <h5>Miesiąc:</h5>
+    <h5>Lokator: @Model.Name @Model.Surname</h5>
+    <h5>Numer płatnika: 235-@Model.ReturnPayerNumber()</h5>
+    <br />
+    <br />
+    <h3>Za co płacisz:</h3>
+    <br />
 
-
-
-
-
-
-
-
+    <ol>
+        <li>Opłata eksploatacyjna @Model.MetersOfFlat m2 * 0.60 zł = @Math.Round(Model.PaymentDetails().costOfExploitation, 2) zł</li>
+        <li>Fundusz remontowy @Model.MetersOfFlat m2 * 1.20 zł = @Math.Round(Model.PaymentDetails().costOfRepairFund, 2) zł</li>
+        <li>Zużycie wody-ciepła @Model.HotWaterConsumption m3 * 20.00 zł = @Math.Round(Model.PaymentDetails().costOfHotWaterConsumption, 2).00 zł</li>
+        <li>Zużycie wody-zimna @Model.ColdWaterConsumption m3 * 40.00 zł = @Math.Round(Model.PaymentDetails().costOfColdWaterConsumption, 2).00 zł</li>
+        <li>Nieczystości ciekłe @(Model.HotWaterConsumption + Model.ColdWaterConsumption) m3 * 5.51 zł = @Math.Round(Model.PaymentDetails().costOfSewage, 2) zł</li>
+        <li>Centralne ogrzewanie @Model.MetersOfFlat m2 * 4.00 zł = @Math.Round(Model.PaymentDetails().costOfCentralHeating, 2) zł</li>
+        <li>Koszty zarządu @Model.MetersOfFlat m2 * 0.40 zł = @Math.Round(Model.PaymentDetails().menagmentCost, 2) zł</li>
+        <li>Razem do zapłaty: @Math.Round(Model.PaymentDetails().summaryOfCosts, 2) zł</li>
+        <p><b>Kwota słownie:</b> @Model.PaymentDetails().summaryOfCostsInWords</p>
+    </ol>
 </div>

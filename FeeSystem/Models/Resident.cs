@@ -13,6 +13,6 @@ namespace FeeSystem.Models
         public decimal MetersOfFlat { get; set; }
         public int HotWaterConsumption { get; set; }
         public int ColdWaterConsumption { get; set; }
-
+        public int PayerNumber { get; set; }
     }
 }
