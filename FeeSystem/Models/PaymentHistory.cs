@@ -10,9 +10,14 @@ namespace FeeSystem.Models
         public int Id { get; set; }
         public Resident ConnectedResident { get; set; }
         public DateTime Month { get; set; }
-        public PricesHistory Prices {get;set;}
+
+
         public int HotWaterConsumption { get; set; }
         public int ColdWaterConsumption { get; set; }
+
+
+        public int PricesHistoryId { get; set; }
+        public PricesHistory PricesHistory { get; set; }
 
     }
 }

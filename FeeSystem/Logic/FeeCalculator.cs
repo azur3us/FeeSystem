@@ -16,13 +16,13 @@ namespace FeeSystem.Logic
         public static PaymentDetailsVM PaymentDetails(this PaymentHistory paymentHistory)
         {
             var ret = new PaymentDetailsVM();
-            ret.costOfExploitation = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.Exploitation;
-            ret.costOfRepairFund = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.RepairFund;
-            ret.costOfHotWaterConsumption = paymentHistory.HotWaterConsumption * paymentHistory.Prices.HotWater;
-            ret.costOfColdWaterConsumption = paymentHistory.ColdWaterConsumption * paymentHistory.Prices.ColdWater;
-            ret.costOfSewage = (paymentHistory.HotWaterConsumption + paymentHistory.ColdWaterConsumption) * paymentHistory.Prices.Sewage;
-            ret.costOfCentralHeating = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.CentralHeating;
-            ret.menagmentCost = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.Menagment;
+            ret.costOfExploitation = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.PricesHistory.Exploitation;
+            ret.costOfRepairFund = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.PricesHistory.RepairFund;
+            ret.costOfHotWaterConsumption = paymentHistory.HotWaterConsumption * paymentHistory.PricesHistory.HotWater;
+            ret.costOfColdWaterConsumption = paymentHistory.ColdWaterConsumption * paymentHistory.PricesHistory.ColdWater;
+            ret.costOfSewage = (paymentHistory.HotWaterConsumption + paymentHistory.ColdWaterConsumption) * paymentHistory.PricesHistory.Sewage;
+            ret.costOfCentralHeating = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.PricesHistory.CentralHeating;
+            ret.menagmentCost = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.PricesHistory.Menagment;
             ret.paymentHistory = paymentHistory;
                                
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FeeSystem.Models
@@ -13,7 +14,7 @@ namespace FeeSystem.Models
         }
         public IEnumerable<PaymentHistory> GetPaymentHistory(Resident resident)
         {
-            return _appDbContext.PaymentHistories.Where(p => p.ConnectedResident == resident).OrderBy(p=>p.Month);
+            return _appDbContext.PaymentHistories.Include(x=>x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderBy(p=>p.Month);
         }
 
         

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FeeSystem.Migrations
 {
-    public partial class AddIdentity : Migration
+    public partial class TestHistory : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,44 @@ namespace FeeSystem.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PricesHistory",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Changed = table.Column<DateTime>(nullable: false),
+                    Exploitation = table.Column<decimal>(nullable: false),
+                    RepairFund = table.Column<decimal>(nullable: false),
+                    HotWater = table.Column<decimal>(nullable: false),
+                    ColdWater = table.Column<decimal>(nullable: false),
+                    Sewage = table.Column<decimal>(nullable: false),
+                    CentralHeating = table.Column<decimal>(nullable: false),
+                    Menagment = table.Column<decimal>(nullable: false),
+                    PaymentHistoryId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PricesHistory", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Residents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Surname = table.Column<string>(nullable: true),
+                    MetersOfFlat = table.Column<decimal>(nullable: false),
+                    PayerNumber = table.Column<int>(nullable: false),
+                    ConnectedUser = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Residents", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +191,35 @@ namespace FeeSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PaymentHistories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ConnectedResidentId = table.Column<int>(nullable: true),
+                    Month = table.Column<DateTime>(nullable: false),
+                    HotWaterConsumption = table.Column<int>(nullable: false),
+                    ColdWaterConsumption = table.Column<int>(nullable: false),
+                    PricesHistoryId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentHistories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PaymentHistories_Residents_ConnectedResidentId",
+                        column: x => x.ConnectedResidentId,
+                        principalTable: "Residents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PaymentHistories_PricesHistory_PricesHistoryId",
+                        column: x => x.PricesHistoryId,
+                        principalTable: "PricesHistory",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +258,17 @@ namespace FeeSystem.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentHistories_ConnectedResidentId",
+                table: "PaymentHistories",
+                column: "ConnectedResidentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentHistories_PricesHistoryId",
+                table: "PaymentHistories",
+                column: "PricesHistoryId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,10 +289,19 @@ namespace FeeSystem.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PaymentHistories");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Residents");
+
+            migrationBuilder.DropTable(
+                name: "PricesHistory");
         }
     }
 }

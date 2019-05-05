@@ -33,13 +33,14 @@ namespace FeeSystem.Migrations
 
                     b.Property<DateTime>("Month");
 
-                    b.Property<int?>("PricesId");
+                    b.Property<int>("PricesHistoryId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ConnectedResidentId");
 
-                    b.HasIndex("PricesId");
+                    b.HasIndex("PricesHistoryId")
+                        .IsUnique();
 
                     b.ToTable("PaymentHistories");
                 });
@@ -61,6 +62,8 @@ namespace FeeSystem.Migrations
                     b.Property<decimal>("HotWater");
 
                     b.Property<decimal>("Menagment");
+
+                    b.Property<int>("PaymentHistoryId");
 
                     b.Property<decimal>("RepairFund");
 
@@ -259,9 +262,10 @@ namespace FeeSystem.Migrations
                         .WithMany()
                         .HasForeignKey("ConnectedResidentId");
 
-                    b.HasOne("FeeSystem.Models.PricesHistory", "Prices")
-                        .WithMany()
-                        .HasForeignKey("PricesId");
+                    b.HasOne("FeeSystem.Models.PricesHistory", "PricesHistory")
+                        .WithOne("PaymentHistory")
+                        .HasForeignKey("FeeSystem.Models.PaymentHistory", "PricesHistoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

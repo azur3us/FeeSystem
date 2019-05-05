@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeeSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190505090204_AddedConnectUser")]
-    partial class AddedConnectUser
+    [Migration("20190505125659_TestHistory")]
+    partial class TestHistory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace FeeSystem.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FeeSystem.Models.Resident", b =>
+            modelBuilder.Entity("FeeSystem.Models.PaymentHistory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,9 +29,60 @@ namespace FeeSystem.Migrations
 
                     b.Property<int>("ColdWaterConsumption");
 
-                    b.Property<Guid?>("ConnectedUser");
+                    b.Property<int?>("ConnectedResidentId");
 
                     b.Property<int>("HotWaterConsumption");
+
+                    b.Property<DateTime>("Month");
+
+                    b.Property<int>("PricesHistoryId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConnectedResidentId");
+
+                    b.HasIndex("PricesHistoryId")
+                        .IsUnique();
+
+                    b.ToTable("PaymentHistories");
+                });
+
+            modelBuilder.Entity("FeeSystem.Models.PricesHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("CentralHeating");
+
+                    b.Property<DateTime>("Changed");
+
+                    b.Property<decimal>("ColdWater");
+
+                    b.Property<decimal>("Exploitation");
+
+                    b.Property<decimal>("HotWater");
+
+                    b.Property<decimal>("Menagment");
+
+                    b.Property<int>("PaymentHistoryId");
+
+                    b.Property<decimal>("RepairFund");
+
+                    b.Property<decimal>("Sewage");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PricesHistory");
+                });
+
+            modelBuilder.Entity("FeeSystem.Models.Resident", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid?>("ConnectedUser");
 
                     b.Property<decimal>("MetersOfFlat");
 
@@ -205,6 +256,18 @@ namespace FeeSystem.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("FeeSystem.Models.PaymentHistory", b =>
+                {
+                    b.HasOne("FeeSystem.Models.Resident", "ConnectedResident")
+                        .WithMany()
+                        .HasForeignKey("ConnectedResidentId");
+
+                    b.HasOne("FeeSystem.Models.PricesHistory", "PricesHistory")
+                        .WithOne("PaymentHistory")
+                        .HasForeignKey("FeeSystem.Models.PaymentHistory", "PricesHistoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
