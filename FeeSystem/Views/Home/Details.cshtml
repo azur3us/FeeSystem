@@ -15,13 +15,13 @@
         <br />
 
         <ol>
-            <li>Opłata eksploatacyjna @Model.resident.MetersOfFlat m2 * 0.60 zł = @Math.Round(payment.costOfExploitation, 2) zł</li>
-            <li>Fundusz remontowy @Model.resident.MetersOfFlat m2 * 1.20 zł = @Math.Round(payment.costOfRepairFund, 2) zł</li>
-            <li>Zużycie wody-ciepła @payment.paymentHistory.HotWaterConsumption m3 * 20.00 zł = @Math.Round(payment.costOfHotWaterConsumption, 2).00 zł</li>
-            <li>Zużycie wody-zimna @payment.paymentHistory.ColdWaterConsumption m3 * 40.00 zł = @Math.Round(payment.costOfColdWaterConsumption, 2).00 zł</li>
+            <li>Opłata eksploatacyjna @(Model.resident.MetersOfFlat * payment.paymentHistory.Prices.Exploitation) = @Math.Round(payment.costOfExploitation, 2) zł</li>
+            <li>Fundusz remontowy @(Model.resident.MetersOfFlat * payment.paymentHistory.Prices.RepairFund)= @Math.Round(payment.costOfRepairFund, 2) zł</li>
+            <li>Zużycie wody-ciepła @(payment.paymentHistory.HotWaterConsumption * payment.paymentHistory.Prices.HotWater)= @Math.Round(payment.costOfHotWaterConsumption, 2).00 zł</li>
+            <li>Zużycie wody-zimna @(payment.paymentHistory.ColdWaterConsumption * payment.paymentHistory.Prices.ColdWater) = @Math.Round(payment.costOfColdWaterConsumption, 2).00 zł</li>
             <li>Nieczystości ciekłe @(payment.paymentHistory.HotWaterConsumption + payment.paymentHistory.ColdWaterConsumption) m3 * 5.51 zł = @Math.Round(payment.costOfSewage, 2) zł</li>
-            <li>Centralne ogrzewanie @Model.resident.MetersOfFlat m2 * 4.00 zł = @Math.Round(payment.costOfCentralHeating, 2) zł</li>
-            <li>Koszty zarządu @Model.resident.MetersOfFlat m2 * 0.40 zł = @Math.Round(payment.menagmentCost, 2) zł</li>
+            <li>Centralne ogrzewanie @(Model.resident.MetersOfFlat *payment.paymentHistory.Prices.CentralHeating) = @Math.Round(payment.costOfCentralHeating, 2) zł</li>
+            <li>Koszty zarządu @(Model.resident.MetersOfFlat * payment.paymentHistory.Prices.Menagment) = @Math.Round(payment.menagmentCost, 2) zł</li>
             <li>Razem do zapłaty: @Math.Round(payment.summaryOfCosts, 2) zł</li>
             <p><b>Kwota słownie:</b> @payment.summaryOfCostsInWords</p>
         </ol>

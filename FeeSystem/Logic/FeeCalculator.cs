@@ -17,12 +17,12 @@ namespace FeeSystem.Logic
         {
             var ret = new PaymentDetailsVM();
             ret.costOfExploitation = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.Exploitation;
-            ret.costOfRepairFund = paymentHistory.ConnectedResident.MetersOfFlat * 1.2m;
-            ret.costOfHotWaterConsumption = paymentHistory.HotWaterConsumption * 20;
-            ret.costOfColdWaterConsumption = paymentHistory.ColdWaterConsumption * 4;
-            ret.costOfSewage = (paymentHistory.HotWaterConsumption + paymentHistory.ColdWaterConsumption) * 5.51m;
-            ret.costOfCentralHeating = paymentHistory.ConnectedResident.MetersOfFlat * 4;
-            ret.menagmentCost = paymentHistory.ConnectedResident.MetersOfFlat * 0.4m;
+            ret.costOfRepairFund = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.RepairFund;
+            ret.costOfHotWaterConsumption = paymentHistory.HotWaterConsumption * paymentHistory.Prices.HotWater;
+            ret.costOfColdWaterConsumption = paymentHistory.ColdWaterConsumption * paymentHistory.Prices.ColdWater;
+            ret.costOfSewage = (paymentHistory.HotWaterConsumption + paymentHistory.ColdWaterConsumption) * paymentHistory.Prices.Sewage;
+            ret.costOfCentralHeating = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.CentralHeating;
+            ret.menagmentCost = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.Prices.Menagment;
             ret.paymentHistory = paymentHistory;
                                
 
