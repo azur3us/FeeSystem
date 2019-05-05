@@ -66,7 +66,7 @@ namespace FeeSystem.Controllers
         {
             var Payments = resident.PaymentDetails(_paymentHistoryRepository);
 
-            return View((resident, Payments));
+            return View("Details", (resident, Payments));
         }
 
     }
