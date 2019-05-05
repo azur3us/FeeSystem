@@ -14,5 +14,6 @@ namespace FeeSystem.Models
         public int HotWaterConsumption { get; set; }
         public int ColdWaterConsumption { get; set; }
         public int PayerNumber { get; set; }
+        public Guid? ConnectedUser { get; set; }
     }
 }

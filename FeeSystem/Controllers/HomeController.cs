@@ -2,15 +2,16 @@
 using FeeSystem.Models;
 using FeeSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Security.Claims;
 
 namespace FeeSystem.Controllers
 {
     public class HomeController : Controller
     {
         private readonly IResidentRepository _residentRepository;
-        
 
         public HomeController(IResidentRepository residentRepository)
         {
@@ -33,6 +34,7 @@ namespace FeeSystem.Controllers
        // [Authorize]
         public IActionResult Details(int id)
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var resident = _residentRepository.TakeResidentById(id);
             resident.PaymentDetails();
 
