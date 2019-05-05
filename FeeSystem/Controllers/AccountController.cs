@@ -54,6 +54,7 @@ namespace FeeSystem.Controllers
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
+                    
                 }
                 else
                 {
@@ -64,6 +65,8 @@ namespace FeeSystem.Controllers
                         this.ModelState.AddModelError("Password", err.Description);
                     }
                 }
+                
+               
             }
             return View(loginVM);
         }

@@ -12,9 +12,10 @@ namespace FeeSystem.Models
             if (!context.Residents.Any())
             {
                 context.AddRange(
-            new Resident { Name = "Andrzej", Surname = "Kowal", MetersOfFlat = 67.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3, PayerNumber = 1},
-            new Resident { Name = "Bartek", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 5, ColdWaterConsumption = 3, PayerNumber = 2},
-            new Resident { Name = "Patryk", Surname = "Kowal", MetersOfFlat = 67.1M, HotWaterConsumption = 2, ColdWaterConsumption = 4, PayerNumber = 3},
+            new Resident { Name = "Andrzej", Surname = "Kowal", MetersOfFlat = 67.1M, PayerNumber = 1},
+            new Resident { Name = "Bartek", Surname = "Kowal", MetersOfFlat = 81.1M, PayerNumber = 2},
+            new Resident { Name = "Patryk", Surname = "Kowal", MetersOfFlat = 67.1M, PayerNumber = 3}
+            /*
             new Resident { Name = "Marcin", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 5, ColdWaterConsumption = 3, PayerNumber = 4},
             new Resident { Name = "Mateusz", Surname = "Kowal", MetersOfFlat = 67.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3, PayerNumber = 5},
             new Resident { Name = "Alicja", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 1, ColdWaterConsumption = 4, PayerNumber = 6},
@@ -36,7 +37,7 @@ namespace FeeSystem.Models
             new Resident { Name = "Stanisław", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 5, ColdWaterConsumption = 3, PayerNumber = 22},
             new Resident { Name = "Jan", Surname = "Kowal", MetersOfFlat = 67.1M, HotWaterConsumption = 2, ColdWaterConsumption = 3, PayerNumber = 23},
             new Resident { Name = "Sylwia", Surname = "Kowal", MetersOfFlat = 81.1M, HotWaterConsumption = 7, ColdWaterConsumption = 4, PayerNumber = 24}
-          
+          */
             );
             }
             context.SaveChanges();

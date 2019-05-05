@@ -12,8 +12,7 @@
             <div class="figure-caption">
                 <a class="resident-link" asp-controller="Home" asp-action="Details" asp-route-id="@resident.Id"><h2>@resident.Name @resident.Surname</h2></a>
                 <h4>Metraż: @resident.MetersOfFlat m2</h4>
-                <h5>Zużycie wody-ciepła: @resident.HotWaterConsumption</h5>
-                <h5>Zużycie wody-zimna: @resident.ColdWaterConsumption</h5>
+              
                 <h6>Numer płatnika: 235-@resident.ReturnPayerNumber()</h6>
                 
                 

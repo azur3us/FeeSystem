@@ -22,5 +22,9 @@ namespace FeeSystem.Models
         {
             return _appDbContext.Residents.FirstOrDefault(r => r.Id == residentId);
         }
+        public Resident TakeResidentByUserId(Guid userId)
+        {
+            return _appDbContext.Residents.FirstOrDefault(r => r.ConnectedUser == userId);
+        }
     }
 }

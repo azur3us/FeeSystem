@@ -1,8 +1,6 @@
 ﻿using FeeSystem.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace FeeSystem.Logic
 {
@@ -15,5 +13,12 @@ namespace FeeSystem.Logic
 
             return payerNumber;
         }
+
+        private static string FullMonthName(int i)
+        {
+            return new DateTime(2019, i, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("pl"));
+        }
+
+
     }
 }

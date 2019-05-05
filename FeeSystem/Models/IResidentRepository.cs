@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace FeeSystem.Models
 {
@@ -6,5 +7,6 @@ namespace FeeSystem.Models
     {
         IEnumerable<Resident> ReturnAllResidents();
         Resident TakeResidentById(int residentId);
+        Resident TakeResidentByUserId(Guid UserId);
     }
 }

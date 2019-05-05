@@ -4,14 +4,16 @@ using FeeSystem.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FeeSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190505090204_AddedConnectUser")]
+    partial class AddedConnectUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace FeeSystem.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FeeSystem.Models.PaymentHistory", b =>
+            modelBuilder.Entity("FeeSystem.Models.Resident", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,43 +29,9 @@ namespace FeeSystem.Migrations
 
                     b.Property<int>("ColdWaterConsumption");
 
-                    b.Property<int?>("ConnectedResidentId");
+                    b.Property<Guid?>("ConnectedUser");
 
                     b.Property<int>("HotWaterConsumption");
-
-                    b.Property<DateTime>("Month");
-
-                    b.Property<int?>("PricesId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ConnectedResidentId");
-
-                    b.HasIndex("PricesId");
-
-                    b.ToTable("PaymentHistories");
-                });
-
-            modelBuilder.Entity("FeeSystem.Models.PricesHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Changed");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PricesHistory");
-                });
-
-            modelBuilder.Entity("FeeSystem.Models.Resident", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<Guid?>("ConnectedUser");
 
                     b.Property<decimal>("MetersOfFlat");
 
@@ -237,17 +205,6 @@ namespace FeeSystem.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("FeeSystem.Models.PaymentHistory", b =>
-                {
-                    b.HasOne("FeeSystem.Models.Resident", "ConnectedResident")
-                        .WithMany()
-                        .HasForeignKey("ConnectedResidentId");
-
-                    b.HasOne("FeeSystem.Models.PricesHistory", "Prices")
-                        .WithMany()
-                        .HasForeignKey("PricesId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

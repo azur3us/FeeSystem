@@ -11,5 +11,6 @@ namespace FeeSystem.Models
 
         }
         public DbSet<Resident> Residents { get; set; }
+        public DbSet<PaymentHistory> PaymentHistories {get; set;}
     }
 }
