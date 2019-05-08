@@ -17,6 +17,13 @@ namespace FeeSystem.Models
             return _appDbContext.PaymentHistories.Include(x=>x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderBy(p=>p.Month);
         }
 
-        
+        public PaymentHistory GetPaymentHistoryById(int paymentHisotryId)
+        {
+           
+            return _appDbContext.PaymentHistories.Include(x => x.PricesHistory).Include(x =>x.ConnectedResident).FirstOrDefault(x => x.Id == paymentHisotryId);
+            
+        }
+
     }
+        
 }

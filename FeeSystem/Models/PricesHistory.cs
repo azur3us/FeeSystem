@@ -17,7 +17,6 @@ namespace FeeSystem.Models
         public decimal CentralHeating { get; set; }
         public decimal Menagment { get; set; }
       
-        public int PaymentHistoryId { get; set; }
-        public PaymentHistory PaymentHistory { get; set; }
+       
     }
 }

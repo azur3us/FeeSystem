@@ -24,6 +24,7 @@ namespace FeeSystem.Logic
             ret.costOfCentralHeating = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.PricesHistory.CentralHeating;
             ret.menagmentCost = paymentHistory.ConnectedResident.MetersOfFlat * paymentHistory.PricesHistory.Menagment;
             ret.paymentHistory = paymentHistory;
+            ret.paymentHistoryId = paymentHistory.Id;
                                
 
             return ret;

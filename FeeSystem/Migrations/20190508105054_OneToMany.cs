@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FeeSystem.Migrations
 {
-    public partial class TestHistory : Migration
+    public partial class OneToMany : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,8 +60,7 @@ namespace FeeSystem.Migrations
                     ColdWater = table.Column<decimal>(nullable: false),
                     Sewage = table.Column<decimal>(nullable: false),
                     CentralHeating = table.Column<decimal>(nullable: false),
-                    Menagment = table.Column<decimal>(nullable: false),
-                    PaymentHistoryId = table.Column<int>(nullable: false)
+                    Menagment = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -201,7 +200,7 @@ namespace FeeSystem.Migrations
                     Month = table.Column<DateTime>(nullable: false),
                     HotWaterConsumption = table.Column<int>(nullable: false),
                     ColdWaterConsumption = table.Column<int>(nullable: false),
-                    PricesHistoryId = table.Column<int>(nullable: false)
+                    PricesHistoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -217,7 +216,7 @@ namespace FeeSystem.Migrations
                         column: x => x.PricesHistoryId,
                         principalTable: "PricesHistory",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -267,8 +266,7 @@ namespace FeeSystem.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_PaymentHistories_PricesHistoryId",
                 table: "PaymentHistories",
-                column: "PricesHistoryId",
-                unique: true);
+                column: "PricesHistoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

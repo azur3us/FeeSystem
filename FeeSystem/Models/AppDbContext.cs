@@ -12,15 +12,16 @@ namespace FeeSystem.Models
         }
         public DbSet<Resident> Residents { get; set; }
         public DbSet<PaymentHistory> PaymentHistories {get; set;}
-
+        /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<PaymentHistory>()
-                .HasOne(a => a.PricesHistory)
-                .WithOne(b => b.PaymentHistory)
+                .HasReq(a => a.PricesHistory)
+                .WithMany(b => b.PaymentHistory)
                 .HasForeignKey<PaymentHistory>(b => b.PricesHistoryId);
         }
+        */
     }
 }

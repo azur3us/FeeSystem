@@ -8,5 +8,6 @@ namespace FeeSystem.Models
     public interface IPaymentHistoryRepository
     {
         IEnumerable<PaymentHistory> GetPaymentHistory(Resident resident);
+        PaymentHistory GetPaymentHistoryById(int paymentHisotryId);
     }
 }

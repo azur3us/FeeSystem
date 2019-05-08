@@ -9,6 +9,7 @@ namespace FeeSystem.ViewModels
 {
     public class PaymentDetailsVM
     {
+        public int paymentHistoryId { get; set; }
         public decimal costOfExploitation { get; set; }
         public decimal costOfRepairFund { get; set; }
         public decimal costOfHotWaterConsumption { get; set; }
