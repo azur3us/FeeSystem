@@ -1,31 +1,32 @@
 ﻿@model Resident
-
-    <div class="row">
+<h2>Edytuj Lokatora</h2>
+<div class="row d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
+    
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="Name" class="custom-control-label"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Surname" class="custom-control-label"></label>
-                    <input asp-for="Surname" class="form-control" />
+                    <label asp-for="Surname"></label>
+                    <input asp-for="Surname" />
                     <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="MetersOfFlat" class="custom-control-label"></label>
-                    <input asp-for="MetersOfFlat" class="form-control" />
+                    <label asp-for="MetersOfFlat"></label>
+                    <input asp-for="MetersOfFlat" />
                     <span asp-validation-for="MetersOfFlat" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PayerNumber" class="custom-control-label"></label>
-                    <input asp-for="PayerNumber" class="form-control" />
-                    <span asp-validation-for="PayerNumber" class="text-danger"></span>
+                    <label asp-for="PayerNumber"></label>
+                    <input asp-for="PayerNumber" />
+                    <span asp-validation-for="PayerNumber"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Edytuj Lokatora" class="btn btn-success" />
+                    <input type="submit" value="Edytuj Lokatora" class="btn btn-success mb-2" />
                     <a asp-action="Index" class="btn btn-danger float-right">Powrót</a>
                 </div>
             </div>
@@ -33,4 +34,5 @@
 
 
         </form>
-    </div>
+   
+</div>

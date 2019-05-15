@@ -1,13 +1,13 @@
 ﻿@model HomeVM
 
 
-<h1 class="my-own-header">@Model.Title</h1>
+    <h1 class="my-own-header">@Model.Title</h1>
 
-<a class="resident-link float-left" asp-action="Create">Dodaj lokatora</a>
+
 
 @foreach (var resident in Model.Residents)
 {
-   
+
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="img-thumbnail mb-4">
             <div class="figure-caption">

@@ -11,7 +11,7 @@
     <link href="~/content/payment-details.css" rel="stylesheet" />
     <link href="~/content/residents-panel.css" rel="stylesheet" />
     <link href="~/content/my-buttons.css" rel="stylesheet" />
-    
+
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -21,31 +21,40 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">FeeSystem</a></li>
+                <li class="nav-item"><a class="nav-link">Historia</a></li>
+                @if (User.IsInRole("Admin"))
+                {
+
+                    <li><a class="nav-link" asp-controller="Home" asp-action="Create">Dodaj lokatora</a></li>
+                }
+
 
 
             </ul>
             @if (SignInManager.IsSignedIn(User))
             {
-                <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
+                <form asp-controller="Account" asp-action="Logout" id="logoutForm"
                       method="post">
                     <ul>
-                        <li class="text-warning">@User.Identity.Name <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
-                    </ul>
+                        <li class="nav-link text-warning">@User.Identity.Name <a class="text-decoration-none" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
 
+                    </ul>
                 </form>
             }
+
             else
             {
                 <ul class="nav navbar-nav">
                     <li><a id="registerLink" asp-controller="Account" asp-action="Register" class="nav-link">Rejestruj</a></li>
                     <li><a id="loginLink" asp-controller="Account" asp-action="Login" class="nav-link">Zaloguj</a></li>
+
                 </ul>
             }
         </div>
     </nav>
 
     <div class="container body-content">
-        <div class="row">
+        <div class="row mt-5">
             @RenderBody()
         </div>
     </div>
