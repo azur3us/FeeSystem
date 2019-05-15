@@ -31,6 +31,7 @@
         background: linear-gradient(to bottom, #32750e 5%, #05ff48 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#32750e', endColorstr='#05ff48',GradientType=0);
         background-color: #32750e;
+       
     }
 
     .btn-to-pay:active {
@@ -41,4 +42,6 @@
     }
     .btn-to-pay:focus{
         outline:none;
+        
     }
+    

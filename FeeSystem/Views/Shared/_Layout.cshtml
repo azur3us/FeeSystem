@@ -11,6 +11,7 @@
     <link href="~/content/payment-details.css" rel="stylesheet" />
     <link href="~/content/residents-panel.css" rel="stylesheet" />
     <link href="~/content/my-buttons.css" rel="stylesheet" />
+    
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -20,8 +21,8 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">FeeSystem</a></li>
-           
-                
+
+
             </ul>
             @if (SignInManager.IsSignedIn(User))
             {
@@ -30,7 +31,7 @@
                     <ul>
                         <li class="text-warning">@User.Identity.Name <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                     </ul>
-                    
+
                 </form>
             }
             else
@@ -48,5 +49,6 @@
             @RenderBody()
         </div>
     </div>
+    <script src="~/scripts/select-bank.js"></script>
 </body>
 </html>

@@ -20,6 +20,6 @@ namespace FeeSystem.Controllers
             var paymentHistory = _paymentHistoryRepository.GetPaymentHistoryById(paymentHistoryId);
             var resident = _residentRepository.TakeResidentById(paymentHistory.ConnectedResident.Id);
             return View((resident, paymentHistory.PaymentDetails()));
+        }
     }
-}
 }

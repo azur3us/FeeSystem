@@ -69,5 +69,60 @@ namespace FeeSystem.Controllers
             return View("Details", (resident, Payments));
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Resident resident)
+        {
+            if (ModelState.IsValid)
+            {
+                _residentRepository.AddResident(resident);
+                return RedirectToAction("Index");
+            }
+            return View(resident);
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            var resident = _residentRepository.TakeResidentById(Id);
+            if (resident == null)
+                return NotFound();
+
+            return View(resident);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Resident resident)
+        {
+            if (ModelState.IsValid)
+            {
+                _residentRepository.EditResident(resident);
+                return RedirectToAction("Index");
+            }
+            return View(resident);
+        }
+
+        public IActionResult Delete(int Id)
+        {
+            var resident = _residentRepository.TakeResidentById(Id);
+            if (resident == null)
+                return NotFound();
+
+            return View(resident);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int Id)
+        {
+            var resident = _residentRepository.TakeResidentById(Id);
+            _residentRepository.DeleteResident(resident);
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

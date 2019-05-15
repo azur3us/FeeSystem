@@ -1,11 +1,32 @@
 ﻿@model (Resident resident, PaymentDetailsVM paymentHistory)
-<div class="img-thumbnail">
-    <form>
-        @Model.resident.Name
-        <label>Satander</label>
-        <input type="radio" name="name" value="" />
-        <label>ING</label>
-        <input type="radio" name="name" value="" />
-    </form>
 
-</div>
+
+    <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
+        
+        {
+        <div class="img-thumbnail">
+            <h4>Odbiorca: Wspólnota Mieszkaniowa</h4>
+            <h4>Numer konta bankowego: 23 3453 0001 0000 00002 2345 8797</h4>
+            <h5>Tytuł przelewu: @Model.resident.Name @Model.resident.Surname opłata za czynsz w miesiącu </h5>
+            <h5>Kwota do zapłaty @Math.Round(Model.paymentHistory.summaryOfCosts, 2) zł</h5>
+            <form>
+                <label>Satander</label>
+                <input type="radio" name="Bank" data-href="https://santander.pl"><br />
+                <label>ING</label>
+                <input type="radio" name="Bank" data-href="https://ing.pl"/><br />
+                <label>BNP Paribas</label>
+                <input type="radio" name="Bank" data-href="https://www.bnpparibas.pl/klienci-indywidualni"/><br />
+                <label>Credit Agricole</label>
+                <input type="radio" name="Bank" data-href="https://www.credit-agricole.pl/klienci-indywidualni"/><br />
+                <label>Getin Bank</label>
+                <input type="radio" name="Bank"data-href="https://www.getinbank.pl/"/><br />
+                <label>Santander Consumer Bank</label>
+                <input type="radio" name="Bank" data-href="https://www.santanderconsumer.pl/"/>
+            </form>
+            <div class="d-flex justify-content-center align-items-center">
+                <a target="_blank" class="btn-transfer btn-to-pay" onclick="">Przkieruj do Banku</a>
+            </div>
+
+        </div> 
+        
+    </div>

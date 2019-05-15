@@ -8,5 +8,9 @@ namespace FeeSystem.Models
         IEnumerable<Resident> ReturnAllResidents();
         Resident TakeResidentById(int residentId);
         Resident TakeResidentByUserId(Guid UserId);
+
+        void AddResident(Resident resident);
+        void EditResident(Resident resident);
+        void DeleteResident(Resident resident);
     }
 }

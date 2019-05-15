@@ -3,19 +3,23 @@
 
 <h1 class="my-own-header">@Model.Title</h1>
 
-
+<a class="resident-link float-left" asp-action="Create">Dodaj lokatora</a>
 
 @foreach (var resident in Model.Residents)
 {
+   
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="img-thumbnail mb-4">
             <div class="figure-caption">
-                <a class="resident-link" asp-controller="Home" asp-action="Details" asp-route-id="@resident.Id"><h2>@resident.Name @resident.Surname</h2></a>
+                <h2>@resident.Name @resident.Surname</h2>
                 <h4>Metraż: @resident.MetersOfFlat m2</h4>
-              
+
                 <h6>Numer płatnika: 235-@resident.ReturnPayerNumber()</h6>
-                
-                
+                <a class="resident-link" asp-controller="Home" asp-action="Details" asp-route-id="@resident.Id">Szczegóły</a>
+                <a class="resident-link" asp-action="Edit" asp-route-id="@resident.Id">Edytuj</a>
+                <a class="resident-link" asp-action="Delete" asp-route-id="@resident.Id">Usuń</a>
+
+
             </div>
         </div>
 

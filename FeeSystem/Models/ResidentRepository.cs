@@ -26,5 +26,25 @@ namespace FeeSystem.Models
         {
             return _appDbContext.Residents.FirstOrDefault(r => r.ConnectedUser == userId);
         }
+
+        public void AddResident(Resident resident)
+        {
+            _appDbContext.Residents.Add(resident);
+            _appDbContext.SaveChanges();
+        }
+
+        public void EditResident(Resident resident)
+        {
+            _appDbContext.Residents.Update(resident);
+            _appDbContext.SaveChanges();
+        }
+
+        public void DeleteResident(Resident resident)
+        {
+            _appDbContext.Residents.Remove(resident);
+            _appDbContext.SaveChanges();
+        }
+
+      
     }
 }
