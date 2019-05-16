@@ -21,5 +21,63 @@ namespace FeeSystem.Controllers
             var resident = _residentRepository.TakeResidentById(paymentHistory.ConnectedResident.Id);
             return View((resident, paymentHistory.PaymentDetails()));
         }
+        public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(PaymentHistory paymentHistory)
+        {
+            if (ModelState.IsValid)
+            {
+                _paymentHistoryRepository.AddPayment(paymentHistory);
+                return RedirectToAction("Index");
+            }
+            return View(paymentHistory);
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            var payment = _paymentHistoryRepository.GetPaymentHistoryById(Id);
+            if (payment == null)
+                return NotFound();
+
+            return View(payment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(PaymentHistory paymentHistory)
+        {
+            if (ModelState.IsValid)
+            {
+                _paymentHistoryRepository.EditPayement(paymentHistory);
+                return RedirectToAction("Index");
+            }
+            return View(paymentHistory);
+        }
+
+        public IActionResult Delete(int Id)
+        {
+            var payment = _paymentHistoryRepository.GetPaymentHistoryById(Id);
+            if (payment == null)
+                return NotFound();
+
+            return View(payment);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int Id)
+        {
+            var payment = _paymentHistoryRepository.GetPaymentHistoryById(Id);
+            _paymentHistoryRepository.DeletePayment(payment);
+
+            return RedirectToAction("Index");
+        }
     }
 }

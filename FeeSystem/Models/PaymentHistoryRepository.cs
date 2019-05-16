@@ -16,18 +16,35 @@ namespace FeeSystem.Models
         {
             return _appDbContext.PaymentHistories.Include(x=>x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderBy(p=>p.Month);
         }
-        public PaymentHistory GetLastItem(Resident resident)
-        {
-            return _appDbContext.PaymentHistories.Include(x=>x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderByDescending(p=>p.Month).First();
-        }
-
+      
         public PaymentHistory GetPaymentHistoryById(int paymentHisotryId)
         {
            
             return _appDbContext.PaymentHistories.Include(x => x.PricesHistory).Include(x =>x.ConnectedResident).FirstOrDefault(x => x.Id == paymentHisotryId);
             
         }
+        public PaymentHistory GetLastItem(Resident resident)
+        {
+            return _appDbContext.PaymentHistories.Include(x => x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderByDescending(p => p.Month).First();
+        }
 
+        public void AddPayment(PaymentHistory paymentHistory)
+        {
+            _appDbContext.PaymentHistories.Add(paymentHistory);
+            _appDbContext.SaveChanges();
+        }
+
+        public void EditPayement(PaymentHistory paymentHistory)
+        {
+            _appDbContext.PaymentHistories.Update(paymentHistory);
+            _appDbContext.SaveChanges();
+        }
+
+        public void DeletePayment(PaymentHistory paymentHistory)
+        {
+            _appDbContext.PaymentHistories.Remove(paymentHistory);
+            _appDbContext.SaveChanges();
+        }
     }
         
 }

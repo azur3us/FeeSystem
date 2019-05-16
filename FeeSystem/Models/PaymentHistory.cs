@@ -13,6 +13,7 @@ namespace FeeSystem.Models
         public int HotWaterConsumption { get; set; }
         public int ColdWaterConsumption { get; set; }
         public PricesHistory PricesHistory { get; set; }
+        public bool PaymentStatus { get; set; }
 
     }
 }

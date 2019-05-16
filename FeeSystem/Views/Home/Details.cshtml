@@ -1,34 +1,46 @@
-﻿@model (Resident resident, IEnumerable<PaymentDetailsVM> paymentHistory)
+﻿@model (Resident resident, PaymentDetailsVM payment)
 
 
-    <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
-        @foreach (var payment in Model.paymentHistory)
+<div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5 row">
+    
+    <div class="details-box p-3 mb-3">
+
+        <h5>Data: @Model.payment.paymentHistory.Month.ToString("dddd, dd MMMM yyyy")</h5>
+        <h5>Miesiąc:</h5>
+        <h5>Lokator: @Model.resident.Name @Model.resident.Surname</h5>
+        <h5>Numer płatnika: 235-@Model.resident.ReturnPayerNumber()</h5>
+        <br />
+        <br />
+        <h3>Za co płacisz:</h3>
+        <br />
+
+        <ol>
+            <li>Opłata eksploatacyjna @Model.resident.MetersOfFlat m2 * @Model.payment.paymentHistory.PricesHistory.Exploitation zł = @Math.Round(Model.payment.costOfExploitation, 2) zł</li>
+            <li>Fundusz remontowy @Model.resident.MetersOfFlat m2 * @Model.payment.paymentHistory.PricesHistory.RepairFund zł = @Math.Round(Model.payment.costOfRepairFund, 2) zł</li>
+            <li>Zużycie wody-ciepła @Model.payment.paymentHistory.HotWaterConsumption m3 * @Model.payment.paymentHistory.PricesHistory.HotWater zł = @Math.Round(Model.payment.costOfHotWaterConsumption, 2) zł</li>
+            <li>Zużycie wody-zimna @Model.payment.paymentHistory.ColdWaterConsumption m3 * @Model.payment.paymentHistory.PricesHistory.ColdWater zł = @Math.Round(Model.payment.costOfColdWaterConsumption, 2) zł</li>
+            <li>Nieczystości ciekłe @(Model.payment.paymentHistory.HotWaterConsumption + Model.payment.paymentHistory.ColdWaterConsumption) m3 * @Model.payment.paymentHistory.PricesHistory.Sewage zł = @Math.Round(Model.payment.costOfSewage, 2) zł</li>
+            <li>Centralne ogrzewanie @Model.resident.MetersOfFlat m2 * @Model.payment.paymentHistory.PricesHistory.CentralHeating zł = @Math.Round(Model.payment.costOfCentralHeating, 2) zł</li>
+            <li>Koszty zarządu @Model.resident.MetersOfFlat m2 * @Model.payment.paymentHistory.PricesHistory.Menagment zł = @Math.Round(Model.payment.menagmentCost, 2) zł</li>
+            <li>Razem do zapłaty: @Math.Round(Model.payment.summaryOfCosts, 2) zł</li>
+
+        </ol>
+        <p><b>Kwota słownie:</b> @Model.payment.summaryOfCostsInWords</p>
+        @if (Model.payment.paymentHistory.PaymentStatus == false)
         {
-        <div class="details-box p-3">
-
-            <h5>Data: @payment.paymentHistory.Month.ToString("dddd, dd MMMM yyyy")</h5>
-            <h5>Miesiąc:</h5>
-            <h5>Lokator: @Model.resident.Name @Model.resident.Surname</h5>
-            <h5>Numer płatnika: 235-@Model.resident.ReturnPayerNumber()</h5>
-            <br />
-            <br />
-            <h3>Za co płacisz:</h3>
-            <br />
-
-            <ol>
-                <li>Opłata eksploatacyjna @Model.resident.MetersOfFlat m2 * @payment.paymentHistory.PricesHistory.Exploitation zł = @Math.Round(payment.costOfExploitation, 2) zł</li>
-                <li>Fundusz remontowy @Model.resident.MetersOfFlat m2 * @payment.paymentHistory.PricesHistory.RepairFund zł = @Math.Round(payment.costOfRepairFund, 2) zł</li>
-                <li>Zużycie wody-ciepła @payment.paymentHistory.HotWaterConsumption m3 * @payment.paymentHistory.PricesHistory.HotWater zł = @Math.Round(payment.costOfHotWaterConsumption, 2) zł</li>
-                <li>Zużycie wody-zimna @payment.paymentHistory.ColdWaterConsumption m3 * @payment.paymentHistory.PricesHistory.ColdWater zł = @Math.Round(payment.costOfColdWaterConsumption, 2) zł</li>
-                <li>Nieczystości ciekłe @(payment.paymentHistory.HotWaterConsumption + payment.paymentHistory.ColdWaterConsumption) m3 * @payment.paymentHistory.PricesHistory.Sewage zł = @Math.Round(payment.costOfSewage, 2) zł</li>
-                <li>Centralne ogrzewanie @Model.resident.MetersOfFlat m2 * @payment.paymentHistory.PricesHistory.CentralHeating zł = @Math.Round(payment.costOfCentralHeating, 2) zł</li>
-                <li>Koszty zarządu @Model.resident.MetersOfFlat m2 * @payment.paymentHistory.PricesHistory.Menagment zł = @Math.Round(payment.menagmentCost, 2) zł</li>
-                <li>Razem do zapłaty: @Math.Round(payment.summaryOfCosts, 2) zł</li>
-                <p><b>Kwota słownie:</b> @payment.summaryOfCostsInWords</p>
-            </ol>
+            <p><b>Status płatności: </b>Nieopłacona</p>
             <div class="d-flex justify-content-center align-items-center">
-                <a asp-action="Transfer" asp-controller="Payment" asp-route-paymentHistoryId="@payment.paymentHistoryId" class="btn-to-pay">Zapłać</a>
+                <a asp-action="Transfer" asp-controller="Payment" asp-route-paymentHistoryId="@Model.payment.paymentHistoryId" class="btn-to-pay">Zapłać</a>
             </div>
-        </div>
         }
+        else
+        {
+            <p><b>Status płatności: </b>Opłacona</p>
+        }
+
+
     </div>
+
+    
+
+</div>

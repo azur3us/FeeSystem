@@ -13,6 +13,11 @@ namespace FeeSystem.Logic
             var list = paymentHistoryRepository.GetPaymentHistory(resident);
             return list.Select(x => x.PaymentDetails());
         }
+        public static PaymentDetailsVM PaymentDetail(this Resident resident, IPaymentHistoryRepository paymentHistoryRepository)
+        {
+            var item = paymentHistoryRepository.GetLastItem(resident);
+            return item.PaymentDetails();
+        }
         public static PaymentDetailsVM PaymentDetails(this PaymentHistory paymentHistory)
         {
             var ret = new PaymentDetailsVM();

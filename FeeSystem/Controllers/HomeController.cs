@@ -38,7 +38,7 @@ namespace FeeSystem.Controllers
             if (resident == null)
                 return NotFound();
 
-            return ShowDetails(resident);
+            return ShowLast(resident);
         }
         private IActionResult IndexAdmin()
         {
@@ -59,15 +59,23 @@ namespace FeeSystem.Controllers
             if (resident == null)
                 return NotFound();
 
-            return ShowDetails(resident);
+            return ShowLast(resident);
         }
-        
-       private IActionResult ShowDetails(Resident resident)
+
+        private IActionResult ShowDetails(Resident resident)
         {
             var Payments = resident.PaymentDetails(_paymentHistoryRepository);
-
-            return View("Details", (resident, Payments));
+            return null;//todo zmienić
+           // return View("Details", (resident, Payments));
         }
+        private IActionResult ShowLast(Resident resident)
+        {
+            var Payment = resident.PaymentDetail(_paymentHistoryRepository);
+
+            return View("Details", (resident, Payment));
+        }
+
+
 
         public IActionResult Create()
         {
