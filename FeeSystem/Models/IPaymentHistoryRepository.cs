@@ -9,5 +9,6 @@ namespace FeeSystem.Models
     {
         IEnumerable<PaymentHistory> GetPaymentHistory(Resident resident);
         PaymentHistory GetPaymentHistoryById(int paymentHisotryId);
+        PaymentHistory GetLastItem(Resident resident);
     }
 }
