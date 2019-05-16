@@ -16,6 +16,10 @@ namespace FeeSystem.Models
         {
             return _appDbContext.PaymentHistories.Include(x=>x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderBy(p=>p.Month);
         }
+        public PaymentHistory GetLastItem(Resident resident)
+        {
+            return _appDbContext.PaymentHistories.Include(x=>x.PricesHistory).Where(p => p.ConnectedResident == resident).OrderByDescending(p=>p.Month).First();
+        }
 
         public PaymentHistory GetPaymentHistoryById(int paymentHisotryId)
         {
