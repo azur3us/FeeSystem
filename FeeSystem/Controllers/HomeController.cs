@@ -14,6 +14,7 @@ namespace FeeSystem.Controllers
     {
         private readonly IResidentRepository _residentRepository;
         private readonly IPaymentHistoryRepository _paymentHistoryRepository;
+
         public HomeController(IResidentRepository residentRepository, IPaymentHistoryRepository paymentHistoryRepository)
         {
             _residentRepository = residentRepository;

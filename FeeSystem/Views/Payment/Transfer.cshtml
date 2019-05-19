@@ -4,10 +4,11 @@
     <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5">
         
         {
-        <div class="img-thumbnail">
+        <div class="img-thumbnail p-5">
             <h4>Odbiorca: Wspólnota Mieszkaniowa</h4>
             <h4>Numer konta bankowego: 23 3453 0001 0000 00002 2345 8797</h4>
-            <h5>Tytuł przelewu: @Model.resident.Name @Model.resident.Surname opłata za czynsz w miesiącu @Model.paymentDetails.paymentHistory.Month</h5>
+            <h5>Tytuł przelewu: @Model.resident.Name @Model.resident.Surname opłata za czynsz w miesiącu @Model.resident.FullMonthName(Model.paymentDetails.paymentHistory.Month.Month) 
+            @Model.paymentDetails.paymentHistory.Month.Year</h5>
             <h5>Kwota do zapłaty @Math.Round(Model.paymentDetails.summaryOfCosts, 2) zł</h5>
             <form>
                 <label>Satander</label>

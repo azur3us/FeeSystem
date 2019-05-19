@@ -4,8 +4,8 @@
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
-    width:100%;
     height: auto;
+    width:600px;
 }
 .details-box h5{
     text-align:right;

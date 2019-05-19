@@ -2,11 +2,11 @@
 
 
 <div class="d-flex justify-content-center align-items-center w-100 mt-5 mb-5 row">
-    
+
     <div class="details-box p-3 mb-3">
 
         <h5>Data: @Model.payment.paymentHistory.Month.ToString("dddd, dd MMMM yyyy")</h5>
-        <h5>Miesiąc:</h5>
+        <h5>Miesiąc: @Model.resident.FullMonthName(Model.payment.paymentHistory.Month.Month)</h5>
         <h5>Lokator: @Model.resident.Name @Model.resident.Surname</h5>
         <h5>Numer płatnika: 235-@Model.resident.ReturnPayerNumber()</h5>
         <br />
@@ -26,21 +26,38 @@
 
         </ol>
         <p><b>Kwota słownie:</b> @Model.payment.summaryOfCostsInWords</p>
-        @if (Model.payment.paymentHistory.PaymentStatus == false)
+        @if (User.IsInRole("Admin"))
         {
-            <p><b>Status płatności: </b>Nieopłacona</p>
-            <div class="d-flex justify-content-center align-items-center">
-                <a asp-action="Transfer" asp-controller="Payment" asp-route-paymentHistoryId="@Model.payment.paymentHistoryId" class="btn-to-pay">Zapłać</a>
-            </div>
+
+            @if (Model.payment.paymentHistory.PaymentStatus == false)
+            {
+                <p><b>Status płatności: </b><span style="color:red;">Nieopłacona</span></p>
+
+            }
+            else
+            {
+                <p><b>Status płatności: </b><span style="color:lawngreen;">Opłacona</span></p>
+            }
+            <a asp-controller="Payment" asp-action="Edit" asp-route-Id="@Model.payment.paymentHistoryId" class="nav-link text-decoration-none">Edytuj status</a>
         }
         else
         {
-            <p><b>Status płatności: </b>Opłacona</p>
+            @if (Model.payment.paymentHistory.PaymentStatus == false)
+            {
+                <p><b>Status płatności: </b><span style="color:red;">Nieopłacona</span></p>
+                <div class="d-flex justify-content-center align-items-center">
+                    <a asp-action="Transfer" asp-controller="Payment" asp-route-paymentHistoryId="@Model.payment.paymentHistoryId" class="btn-to-pay">Zapłać</a>
+                </div>
+            }
+            else
+            {
+                <p><b>Status płatności: </b><span style="color:lawngreen;">Opłacona</span></p>
+            }
         }
 
 
     </div>
 
-    
+
 
 </div>

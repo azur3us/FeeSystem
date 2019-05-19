@@ -14,9 +14,10 @@ namespace FeeSystem.Logic
             return payerNumber;
         }
 
-        private static string FullMonthName(int i)
+        public static string FullMonthName(this Resident resident, int i)
         {
-            return new DateTime(2019, i, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("pl"));
+            var month = new DateTime(2019, i, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("pl"));
+            return month; 
         }
 
 

@@ -1,7 +1,10 @@
 ﻿using FeeSystem.Logic;
 using FeeSystem.Models;
 using FeeSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Security.Claims;
 
 namespace FeeSystem.Controllers
 {
@@ -20,10 +23,6 @@ namespace FeeSystem.Controllers
             var paymentHistory = _paymentHistoryRepository.GetPaymentHistoryById(paymentHistoryId);
             var resident = _residentRepository.TakeResidentById(paymentHistory.ConnectedResident.Id);
             return View((resident, paymentHistory.PaymentDetails()));
-        }
-        public IActionResult Index()
-        {
-            return View();
         }
         public IActionResult Create()
         {
@@ -57,7 +56,7 @@ namespace FeeSystem.Controllers
             if (ModelState.IsValid)
             {
                 _paymentHistoryRepository.EditPayement(paymentHistory);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(paymentHistory);
         }
