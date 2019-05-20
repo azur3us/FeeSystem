@@ -35,7 +35,7 @@ namespace FeeSystem.Controllers
             if (ModelState.IsValid)
             {
                 _paymentHistoryRepository.AddPayment(paymentHistory);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(paymentHistory);
         }

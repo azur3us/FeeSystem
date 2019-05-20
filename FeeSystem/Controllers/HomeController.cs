@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
@@ -41,13 +42,26 @@ namespace FeeSystem.Controllers
 
             return ShowLast(resident);
         }
+        public IActionResult History()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+                throw new Exception("User Id is null");
+
+            var resident = _residentRepository.TakeResidentByUserId(Guid.Parse(userId));
+
+            if (resident == null)
+                return NotFound();
+
+            return ShowDetails(resident);
+        }
         private IActionResult IndexAdmin()
         {
             var residents = _residentRepository.ReturnAllResidents().OrderBy(r => r.PayerNumber);
 
             var homeVM = new HomeVM()
             {
-                Title = "Lista lokatorów:",
+                Title = "Lista Lokatorów:",
                 Residents = residents.ToList()
             };
             return View("Index", homeVM);
@@ -62,18 +76,27 @@ namespace FeeSystem.Controllers
 
             return ShowLast(resident);
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult HistoryOfUser(int id)
+        {
+            var resident = _residentRepository.TakeResidentById(id);
+
+            if (resident == null)
+                return NotFound();
+
+            return ShowDetails(resident);
+        }
 
         private IActionResult ShowDetails(Resident resident)
         {
             var Payments = resident.PaymentDetails(_paymentHistoryRepository);
-            return null;//todo zmienić
-           // return View("Details", (resident, Payments));
+            return View("Details", (resident, Payments));
         }
         private IActionResult ShowLast(Resident resident)
         {
             var Payment = resident.PaymentDetail(_paymentHistoryRepository);
 
-            return View("Details", (resident, Payment));
+            return View("Details", (resident, (new List<PaymentDetailsVM> { Payment })as IEnumerable<PaymentDetailsVM>));
         }
 
 
