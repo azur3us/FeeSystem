@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace FeeSystem.Models
@@ -43,8 +44,9 @@ namespace FeeSystem.Models
 
         public void EditPayement(PaymentHistory paymentHistory)
         {
-           
-            _appDbContext.PaymentHistories.Update(paymentHistory);
+            var a = _appDbContext.PaymentHistories.Attach(paymentHistory);
+            a.Property(x => x.PaymentStatus).IsModified = true;
+            a.Property(x => x.Month).IsModified = true;
             _appDbContext.SaveChanges();
         }
 

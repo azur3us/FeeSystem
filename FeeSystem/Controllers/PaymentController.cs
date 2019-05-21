@@ -4,6 +4,7 @@ using FeeSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace FeeSystem.Controllers
@@ -26,7 +27,9 @@ namespace FeeSystem.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            var residents = _residentRepository.ReturnAllResidents();
+            (PaymentHistory, IEnumerable<Resident>) model = (null, residents);
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -37,7 +40,8 @@ namespace FeeSystem.Controllers
                 _paymentHistoryRepository.AddPayment(paymentHistory);
                 return RedirectToAction("Index", "Home");
             }
-            return View(paymentHistory);
+            (PaymentHistory, IEnumerable<Resident>) model = (null, null);
+            return View(model);
         }
 
         public IActionResult Edit(int Id)
