@@ -76,7 +76,7 @@ namespace FeeSystem.Controllers
             var payment = _paymentHistoryRepository.GetPaymentHistoryById(Id);
             _paymentHistoryRepository.DeletePayment(payment);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

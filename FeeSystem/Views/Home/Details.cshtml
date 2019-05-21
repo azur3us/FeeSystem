@@ -42,6 +42,7 @@
                 <p><b>Status płatności: </b><span style="color:lawngreen;">Opłacona</span></p>
             }
             <a asp-controller="Payment" asp-action="Edit" asp-route-Id="@payment.paymentHistoryId" class="nav-link text-decoration-none">Edytuj status</a>
+            <a asp-controller="Payment" asp-action="Delete" asp-route-Id="@payment.paymentHistoryId" class="nav-link text-decoration-none">Usuń płatność</a>
         }
         else
         {
