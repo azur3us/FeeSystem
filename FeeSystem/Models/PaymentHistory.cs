@@ -14,6 +14,7 @@ namespace FeeSystem.Models
         public int ColdWaterConsumption { get; set; }
         public PricesHistory PricesHistory { get; set; }
         public bool PaymentStatus { get; set; }
+        public int ConnectedResidentId { get; set; }
 
     }
 }

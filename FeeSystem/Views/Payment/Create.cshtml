@@ -7,33 +7,33 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="ConnectedResident"></label>
-                <input asp-for="ConnectedResident" />
-                <span asp-validation-for="ConnectedResident" class="text-danger"></span>
+                <label asp-for="ConnectedResidentId">Identyfikator Lokatora</label>
+                <input asp-for="ConnectedResidentId" />
+                <span asp-validation-for="ConnectedResidentId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Month"></label>
+                <label asp-for="Month">Miesiąc</label>
                 <input asp-for="Month" />
                 <span asp-validation-for="Month" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HotWaterConsumption"></label>
+                <label asp-for="HotWaterConsumption">Zużycie wody ciepłej</label>
                 <input asp-for="HotWaterConsumption" />
                 <span asp-validation-for="HotWaterConsumption" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ColdWaterConsumption"></label>
+                <label asp-for="ColdWaterConsumption">Zużycie wody zimnej</label>
                 <input asp-for="ColdWaterConsumption" />
                 <span asp-validation-for="ColdWaterConsumption" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PaymentStatus"></label>
+                <label asp-for="PaymentStatus">Status płatności</label>
                 <input asp-for="PaymentStatus" />
                 <span asp-validation-for="PaymentStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Dodaj Płatność" class="btn btn-success mb-2" />
-                <a asp-action="Index" class="btn btn-danger float-right">Powrót</a>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-danger float-right">Powrót</a>
             </div>
         </div>
 

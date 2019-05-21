@@ -27,7 +27,7 @@ namespace FeeSystem.Migrations
 
                     b.Property<int>("ColdWaterConsumption");
 
-                    b.Property<int?>("ConnectedResidentId");
+                    b.Property<int>("ConnectedResidentId");
 
                     b.Property<int>("HotWaterConsumption");
 
@@ -259,7 +259,8 @@ namespace FeeSystem.Migrations
                 {
                     b.HasOne("FeeSystem.Models.Resident", "ConnectedResident")
                         .WithMany()
-                        .HasForeignKey("ConnectedResidentId");
+                        .HasForeignKey("ConnectedResidentId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FeeSystem.Models.PricesHistory", "PricesHistory")
                         .WithMany()

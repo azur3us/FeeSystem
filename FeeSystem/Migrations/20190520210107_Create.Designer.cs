@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeeSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190515194711_AddedPaymentStatusToPaymentHistory")]
-    partial class AddedPaymentStatusToPaymentHistory
+    [Migration("20190520210107_Create")]
+    partial class Create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,7 @@ namespace FeeSystem.Migrations
 
                     b.Property<int>("ColdWaterConsumption");
 
-                    b.Property<int?>("ConnectedResidentId");
+                    b.Property<int>("ConnectedResidentId");
 
                     b.Property<int>("HotWaterConsumption");
 
@@ -261,7 +261,8 @@ namespace FeeSystem.Migrations
                 {
                     b.HasOne("FeeSystem.Models.Resident", "ConnectedResident")
                         .WithMany()
-                        .HasForeignKey("ConnectedResidentId");
+                        .HasForeignKey("ConnectedResidentId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FeeSystem.Models.PricesHistory", "PricesHistory")
                         .WithMany()

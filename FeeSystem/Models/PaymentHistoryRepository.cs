@@ -31,6 +31,8 @@ namespace FeeSystem.Models
         {
             return _appDbContext.PricesHistory.OrderByDescending(x => x.Changed).First();
         }
+      
+      
 
         public void AddPayment(PaymentHistory paymentHistory)
         {
@@ -41,6 +43,7 @@ namespace FeeSystem.Models
 
         public void EditPayement(PaymentHistory paymentHistory)
         {
+           
             _appDbContext.PaymentHistories.Update(paymentHistory);
             _appDbContext.SaveChanges();
         }
@@ -50,6 +53,8 @@ namespace FeeSystem.Models
             _appDbContext.PaymentHistories.Remove(paymentHistory);
             _appDbContext.SaveChanges();
         }
+
+        
     }
         
 }

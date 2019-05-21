@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FeeSystem.Migrations
 {
-    public partial class OneToMany : Migration
+    public partial class Create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -196,11 +196,12 @@ namespace FeeSystem.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ConnectedResidentId = table.Column<int>(nullable: true),
                     Month = table.Column<DateTime>(nullable: false),
                     HotWaterConsumption = table.Column<int>(nullable: false),
                     ColdWaterConsumption = table.Column<int>(nullable: false),
-                    PricesHistoryId = table.Column<int>(nullable: true)
+                    PricesHistoryId = table.Column<int>(nullable: true),
+                    PaymentStatus = table.Column<bool>(nullable: false),
+                    ConnectedResidentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -210,7 +211,7 @@ namespace FeeSystem.Migrations
                         column: x => x.ConnectedResidentId,
                         principalTable: "Residents",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PaymentHistories_PricesHistory_PricesHistoryId",
                         column: x => x.PricesHistoryId,
