@@ -23,7 +23,7 @@
             @if (SignInManager.IsSignedIn(User))
             {
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">FeeSystem</a></li>
+                <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link">System opłat</a></li>
 
                 @if (User.IsInRole("Admin"))
                 {
@@ -61,8 +61,11 @@
     <div class="container body-content">
         <div class="row mt-5">
             @RenderBody()
+
         </div>
+        
     </div>
+    <footer class="d-flex justify-content-center">2019 &copy; FeeSystem by Patryk Binicki</footer>
     <script src="~/scripts/select-bank.js"></script>
 </body>
 </html>

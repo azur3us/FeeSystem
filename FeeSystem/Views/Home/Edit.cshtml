@@ -6,22 +6,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="Name"></label>
+                    <label asp-for="Name">Imię</label>
                     <input asp-for="Name" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Surname"></label>
+                    <label asp-for="Surname">Nazwisko</label>
                     <input asp-for="Surname" />
                     <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="MetersOfFlat"></label>
-                    <input asp-for="MetersOfFlat" />
+                    <label asp-for="MetersOfFlat">Metraż mieszkania</label>
+                    <select asp-for="MetersOfFlat">
+                        <option>67.1</option>
+                        <option>81.1</option>
+                    </select>
                     <span asp-validation-for="MetersOfFlat" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PayerNumber"></label>
+                    <label asp-for="PayerNumber">Numer płatnika</label>
                     <input asp-for="PayerNumber" />
                     <span asp-validation-for="PayerNumber"></span>
                 </div>

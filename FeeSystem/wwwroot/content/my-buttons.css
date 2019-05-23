@@ -1,47 +1,76 @@
 ﻿.btn-to-pay {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #05ff48), color-stop(1, #32750e));
-    background: -moz-linear-gradient(top, #05ff48 5%, #32750e 100%);
-    background: -webkit-linear-gradient(top, #05ff48 5%, #32750e 100%);
-    background: -o-linear-gradient(top, #05ff48 5%, #32750e 100%);
-    background: -ms-linear-gradient(top, #05ff48 5%, #32750e 100%);
-    background: linear-gradient(to bottom, #05ff48 5%, #32750e 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#05ff48', endColorstr='#32750e',GradientType=0);
-    background-color: #05ff48;
-    -moz-border-radius: 28px;
-    -webkit-border-radius: 28px;
-    border-radius: 28px;
-    border: 1px solid #32750e;
+    -moz-box-shadow: inset 0px 0px 5px 0px #f5978e;
+    -webkit-box-shadow: inset 0px 0px 5px 0px #f5978e;
+    box-shadow: inset 0px 0px 5px 0px #f5978e;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f));
+    background: -moz-linear-gradient(top, #f24537 5%, #c62d1f 100%);
+    background: -webkit-linear-gradient(top, #f24537 5%, #c62d1f 100%);
+    background: -o-linear-gradient(top, #f24537 5%, #c62d1f 100%);
+    background: -ms-linear-gradient(top, #f24537 5%, #c62d1f 100%);
+    background: linear-gradient(to bottom, #f24537 5%, #c62d1f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f',GradientType=0);
+    background-color: #f24537;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #d02718;
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
     font-family: Arial;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    padding: 14px 30px;
+    padding: 12px 24px;
     text-decoration: none;
-    text-shadow: 0px 0px 0px #2f6627;
+    text-shadow: 0px 0px 0px #810e05;
 }
 
     .btn-to-pay:hover {
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #32750e), color-stop(1, #05ff48));
-        background: -moz-linear-gradient(top, #32750e 5%, #05ff48 100%);
-        background: -webkit-linear-gradient(top, #32750e 5%, #05ff48 100%);
-        background: -o-linear-gradient(top, #32750e 5%, #05ff48 100%);
-        background: -ms-linear-gradient(top, #32750e 5%, #05ff48 100%);
-        background: linear-gradient(to bottom, #32750e 5%, #05ff48 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#32750e', endColorstr='#05ff48',GradientType=0);
-        background-color: #32750e;
-       
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537));
+        background: -moz-linear-gradient(top, #c62d1f 5%, #f24537 100%);
+        background: -webkit-linear-gradient(top, #c62d1f 5%, #f24537 100%);
+        background: -o-linear-gradient(top, #c62d1f 5%, #f24537 100%);
+        background: -ms-linear-gradient(top, #c62d1f 5%, #f24537 100%);
+        background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537',GradientType=0);
+        background-color: #c62d1f;
+        color: white;
+        text-decoration: none;
     }
 
     .btn-to-pay:active {
         position: relative;
         top: 1px;
-        text-decoration: none;
-        outline:none;
     }
-    .btn-to-pay:focus{
-        outline:none;
-        
+
+.btn-to-transfer {
+    -moz-box-shadow: inset 0px 0px 5px 0px #f5978e;
+    -webkit-box-shadow: inset 0px 0px 5px 0px #f5978e;
+    box-shadow: inset 0px 0px 5px 0px #f5978e;
+    background-color: #187aa8;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #2f05a3;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 24px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #810e05;
+}
+
+    .btn-to-transfer:hover {
+        background-color: #2041c7;
+        color:white;
+        text-decoration:none;
     }
-    
+
+    .btn-to-transfer:active {
+        position: relative;
+        top: 1px;
+    }
+

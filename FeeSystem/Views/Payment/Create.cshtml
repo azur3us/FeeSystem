@@ -1,4 +1,4 @@
-﻿@model (PaymentHistory paymentHistory, IEnumerable<Resident> residents) 
+﻿@model PaymentHistory 
 
 <h2>Dodaj Płatność</h2>
 
@@ -7,34 +7,30 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="col-md-4">
             <div class="form-group">
-                <label asp-for="paymentHistory.ConnectedResidentId">Identyfikator Lokatora</label>
-                <select asp-for="paymentHistory.ConnectedResidentId">
-                    @foreach (var resident in Model.residents)
-                    {
-                        <option value="@resident.Id" >@resident.Name</option>
-                    }
-                    </select>
-                <span asp-validation-for="paymentHistory.ConnectedResidentId" class="text-danger"></span>
+                <label asp-for="ConnectedResidentId">Identyfikator Lokatora</label>
+                <input asp-for="ConnectedResidentId"/>
+                   
+                <span asp-validation-for="ConnectedResidentId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="paymentHistory.Month">Miesiąc</label>
-                <input asp-for="paymentHistory.Month" />
-                <span asp-validation-for="paymentHistory.Month" class="text-danger"></span>
+                <label asp-for="Month">Miesiąc</label>
+                <input asp-for="Month" />
+                <span asp-validation-for="Month" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="paymentHistory.HotWaterConsumption">Zużycie wody ciepłej</label>
-                <input asp-for="paymentHistory.HotWaterConsumption" />
-                <span asp-validation-for="paymentHistory.HotWaterConsumption" class="text-danger"></span>
+                <label asp-for="HotWaterConsumption">Zużycie wody ciepłej</label>
+                <input asp-for="HotWaterConsumption" />
+                <span asp-validation-for="HotWaterConsumption" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="paymentHistory.ColdWaterConsumption">Zużycie wody zimnej</label>
-                <input asp-for="paymentHistory.ColdWaterConsumption" />
-                <span asp-validation-for="paymentHistory.ColdWaterConsumption" class="text-danger"></span>
+                <label asp-for="ColdWaterConsumption">Zużycie wody zimnej</label>
+                <input asp-for="ColdWaterConsumption" />
+                <span asp-validation-for="ColdWaterConsumption" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="paymentHistory.PaymentStatus">Status płatności</label>
-                <input asp-for="paymentHistory.PaymentStatus" />
-                <span asp-validation-for="paymentHistory.PaymentStatus" class="text-danger"></span>
+                <label asp-for="PaymentStatus">Status płatności</label>
+                <input asp-for="PaymentStatus" />
+                <span asp-validation-for="PaymentStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Dodaj Płatność" class="btn btn-success mb-2" />

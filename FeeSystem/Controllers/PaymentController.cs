@@ -27,9 +27,10 @@ namespace FeeSystem.Controllers
         }
         public IActionResult Create()
         {
-            var residents = _residentRepository.ReturnAllResidents();
+            /*var residents = _residentRepository.ReturnAllResidents();
             (PaymentHistory, IEnumerable<Resident>) model = (null, residents);
-            return View(model);
+            */
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -40,8 +41,8 @@ namespace FeeSystem.Controllers
                 _paymentHistoryRepository.AddPayment(paymentHistory);
                 return RedirectToAction("Index", "Home");
             }
-            (PaymentHistory, IEnumerable<Resident>) model = (null, null);
-            return View(model);
+            //(PaymentHistory, IEnumerable<Resident>) model = (null, null);
+            return View(paymentHistory);
         }
 
         public IActionResult Edit(int Id)
