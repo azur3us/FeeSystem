@@ -1,9 +1,10 @@
 ﻿
 .box {
+    margin-top:300px;
     width: 380px;
     padding: 40px;
-    position: absolute;
-    top: 50%;
+    position: relative;
+    //top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #191919;

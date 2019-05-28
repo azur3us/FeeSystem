@@ -73,4 +73,7 @@
         position: relative;
         top: 1px;
     }
-
+a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+}
