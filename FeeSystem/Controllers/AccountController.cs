@@ -28,10 +28,10 @@ namespace FeeSystem.Controllers
 
             var user = await _userManager.FindByNameAsync(loginVM.UserName);
 
-            if(user !=null)
+            if (user != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
@@ -46,7 +46,7 @@ namespace FeeSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(LoginVM loginVM)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = new IdentityUser() { UserName = loginVM.UserName };
                 var result = await _userManager.CreateAsync(user, loginVM.Password);
@@ -54,8 +54,12 @@ namespace FeeSystem.Controllers
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
-                    
+
                 }
+                this.ModelState.AddModelError("Password", "Hasło musi zawierać min 6 znaków," +
+                    " w tym co najmniej jedną wielką literę (A-Z), co najmniej jedną cyfrę (0-9)" +
+                    " oraz co najmniej jeden znak alfanumerczyny np.';'");
+                /*
                 else
                 {
                     var errList = "";
@@ -65,8 +69,8 @@ namespace FeeSystem.Controllers
                         this.ModelState.AddModelError("Password", err.Description);
                     }
                 }
-                
-               
+                */
+
             }
             return View(loginVM);
         }
