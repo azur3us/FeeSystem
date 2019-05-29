@@ -4,17 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace FeeSystem.Controllers
 {
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+      
 
         public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+          
         }
         public IActionResult Login()
         {
@@ -56,14 +59,17 @@ namespace FeeSystem.Controllers
                     return RedirectToAction("Index", "Home");
 
                 }
+                
                 this.ModelState.AddModelError("Password", "Hasło musi zawierać min 6 znaków," +
                     " w tym co najmniej jedną wielką literę (A-Z), co najmniej jedną cyfrę (0-9)" +
                     " oraz co najmniej jeden znak alfanumerczyny np.';'");
+
+                
                 /*
                 else
                 {
                     var errList = "";
-                    var error = result.Errors.ToList(); 
+                    var error = result.Errors.ToList();
                     foreach (var err in error) 
                     {
                         this.ModelState.AddModelError("Password", err.Description);

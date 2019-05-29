@@ -8,8 +8,8 @@
 
     <div class="details-box p-3 mb-3">
 
-        <h5>Data: @payment.paymentHistory.Month.ToString("dddd, dd MMMM yyyy")</h5>
-        <h5>Miesiąc: @Model.resident.FullMonthName(payment.paymentHistory.Month.Month)</h5>
+        <!-- <h5>Data:@payment.paymentHistory.Month.ToString("dddd, dd MMMM yyyy")</h5>-->
+        <h5>Miesiąc: @Model.resident.FullMonthName(payment.paymentHistory.Month.Month) @payment.paymentHistory.Month.Year</h5>
         <h5>Lokator: @Model.resident.Name @Model.resident.Surname</h5>
         <h5>Numer płatnika: 235-@Model.resident.ReturnPayerNumber()</h5>
         <br />
