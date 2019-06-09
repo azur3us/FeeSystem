@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Globalization;
 
 namespace FeeSystem.Controllers
 {
@@ -60,22 +60,23 @@ namespace FeeSystem.Controllers
 
                 }
                 
-                this.ModelState.AddModelError("Password", "Hasło musi zawierać min 6 znaków," +
+               /* this.ModelState.AddModelError("Password", "Hasło musi zawierać min 6 znaków," +
                     " w tym co najmniej jedną wielką literę (A-Z), co najmniej jedną cyfrę (0-9)" +
                     " oraz co najmniej jeden znak alfanumerczyny np.';'");
-
-                
-                /*
+                */
+                              
                 else
                 {
                     var errList = "";
+                    
                     var error = result.Errors.ToList();
                     foreach (var err in error) 
                     {
+                        
                         this.ModelState.AddModelError("Password", err.Description);
                     }
                 }
-                */
+                
 
             }
             return View(loginVM);
